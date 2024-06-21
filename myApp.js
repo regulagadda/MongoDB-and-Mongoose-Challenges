@@ -1,11 +1,25 @@
 require('dotenv').config();
 
+//Install and Set Up Mongoose lesson-1
 let uri = 'mongodb+srv://User:tJv1Az5bg4cSvSfO@atlascluster.m4jrb0d.mongodb.net/vijayadb1?retryWrites=true&w=majority&appName=AtlasCluster'
 console.log(process.env.MONGO_URI)
 let mongoose = require('mongoose')
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-let Person;
+//Create a Model-lesson-2
+let peopleSchema = new mongoose.Schema({
+  name :{type: String, require: true },
+  age : Number,
+  favoriteFoods : [String]
+})
+
+let Person = mongoose.model('Person', peopleSchema)
+
+let vijaya = new Person ({name : 'Ratna', age :27, favoriteFoods : ['biryani', 'icecreeam']})
+console.log(vijaya)
+
+
+
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
