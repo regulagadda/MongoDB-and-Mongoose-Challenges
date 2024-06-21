@@ -1,5 +1,9 @@
 require('dotenv').config();
 
+let uri = 'mongodb+srv://User:tJv1Az5bg4cSvSfO@atlascluster.m4jrb0d.mongodb.net/vijayadb1?retryWrites=true&w=majority&appName=AtlasCluster'
+console.log(process.env.MONGO_URI)
+let mongoose = require('mongoose')
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let Person;
 
