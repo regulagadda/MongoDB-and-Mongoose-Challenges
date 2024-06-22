@@ -155,7 +155,7 @@ router.post("/find-all-by-name", function (req, res, next) {
         return next({ message: "Missing callback argument" });
       }
       res.json(data);
-      Person.remove().exec(); //if I hide this line then the person is saved in the MongoDB.
+      Person.remove().exec();
     });
   });
 });
