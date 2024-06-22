@@ -18,11 +18,16 @@ let Person = mongoose.model('Person', peopleSchema)
 let vijaya = new Person ({name : 'Ratna', age :27, favoriteFoods : ['biryani', 'icecreeam']})
 console.log(vijaya)
 
-
-
-
-const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+//Create and Save a Record of a Model lesson-3
+const createAndSavePerson = function(done){
+  let vijayaratna = new Person ({name : 'RVRK', age :22, favoriteFoods : ['Potato']})
+  vijayaratna.save((error, data) => {
+    if(error){
+      console.log(error)
+    }else{
+      done(null, data)
+    }
+  })
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
