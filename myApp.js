@@ -91,17 +91,41 @@ const findPersonById = (personId, done) => {
   })
 };
 
+//Perform Classic Updates by Running Find, Edit, then Save lesson-8
+
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
+Person.findById(personId, (error, result) => {
+  if(error){
+    console.log(error)
+  }else{
+    result.favoriteFoods.push(foodToAdd)
+    result.save((error, updatedResult) => {
+      if(error){
+        console.log(error)
+      }else{
+        done(null, updatedResult)
+      }
+    })
 
-  done(null /*, data*/);
+    }
+})
 };
+
+//Perform New Updates on a Document Using model.findOneAndUpdate() leeson-9
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
-
-  done(null /*, data*/);
+Person.findOneAndUpdate({name: personName}, {age : ageToSet}, {new : true}, (error, UpdatedRecord) => {
+  if(error){
+    console.log(error)
+  }else{
+    done(null, UpdatedRecord)
+  }
+})
 };
+
+//Delete One Document Using model.findByIdAndRemove lesson-10
 
 const removeById = (personId, done) => {
   done(null /*, data*/);
