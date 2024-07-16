@@ -82,8 +82,13 @@ const findOneByFood = (food, done) => {
 //Use model.findById() to Search Your Database By _id lesson-7
 
 const findPersonById = (personId, done) => {
-  
-  done(null /*, data*/);
+  Person.findById(personId, (error, result) => {
+    if(error){
+      console.log(error)
+    }else{
+      done(null, result)
+    }
+  })
 };
 
 const findEditThenSave = (personId, done) => {
